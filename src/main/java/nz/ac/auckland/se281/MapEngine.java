@@ -9,6 +9,10 @@ public class MapEngine {
 
   private Set<Country> countrySet = new HashSet<>();
   private boolean correctInput = false;
+  private String start = null;
+  private boolean correctStart = false;
+  private String end = null;
+  private boolean correctEnd = false;
 
   public MapEngine() {
     // add other code here if you want
@@ -54,5 +58,34 @@ public class MapEngine {
   }
 
   /** this method is invoked when the user run the command route. */
-  public void showRoute() {}
+  public void showRoute() {
+
+    while (!correctStart) {
+      try {
+        MessageCli.INSERT_SOURCE.printMessage();
+        start = Utils.scanner.nextLine();
+        start = Utils.capitalizeFirstLetterOfEachWord(start);
+        Utils.doesCountryExist(start, countrySet);
+        correctStart = true;
+      } catch (CountryDoesNotExistException e) {
+        MessageCli.INVALID_COUNTRY.printMessage(start);
+      }
+    }
+
+    while (!correctEnd) {
+      try {
+        MessageCli.INSERT_DESTINATION.printMessage();
+        end = Utils.scanner.nextLine();
+        end = Utils.capitalizeFirstLetterOfEachWord(end);
+        Utils.doesCountryExist(end, countrySet);
+        correctEnd = true;
+      } catch (CountryDoesNotExistException e) {
+        MessageCli.INVALID_COUNTRY.printMessage(end);
+      }
+    }
+
+    if (start.equals(end)) {
+      MessageCli.NO_CROSSBORDER_TRAVEL.printMessage();
+    }
+  }
 }
