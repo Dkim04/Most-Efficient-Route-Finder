@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Scanner;
+import java.util.Set;
 
 /**
  * Utility methods for common tasks.
@@ -70,5 +71,16 @@ public class Utils {
     }
     // Remove the trailing space
     return capitalizedString.toString().trim();
+  }
+
+  public static boolean doesCountryExist(String country, Set<Country> set)
+      throws CountryDoesNotExistException {
+    for (Country otheCountry : set) {
+      if (otheCountry.getCountryName().equals(country)) {
+        return true;
+      }
+    }
+
+    throw new CountryDoesNotExistException();
   }
 }

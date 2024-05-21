@@ -8,6 +8,7 @@ import java.util.Set;
 public class MapEngine {
 
   private Set<Country> countrySet = new HashSet<>();
+  private boolean correctInput = false;
 
   public MapEngine() {
     // add other code here if you want
@@ -30,6 +31,24 @@ public class MapEngine {
   /** this method is invoked when the user run the command info-country. */
   public void showInfoCountry() {
     // add code here
+    String input = null;
+
+    while (!correctInput) {
+      try {
+        MessageCli.INSERT_COUNTRY.printMessage();
+        input = Utils.scanner.nextLine();
+        Utils.doesCountryExist(input, countrySet);
+        correctInput = true;
+      } catch (CountryDoesNotExistException e) {
+        MessageCli.INVALID_COUNTRY.printMessage(input);
+      }
+    }
+
+    for (Country country : countrySet) {
+      if (country.getCountryName().equals(input)) {
+        MessageCli.COUNTRY_INFO.printMessage(input, country.getContinent(), country.getTaxFee());
+      }
+    }
   }
 
   /** this method is invoked when the user run the command route. */
