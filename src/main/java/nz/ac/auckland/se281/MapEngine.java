@@ -37,6 +37,7 @@ public class MapEngine {
       try {
         MessageCli.INSERT_COUNTRY.printMessage();
         input = Utils.scanner.nextLine();
+        input = Utils.capitalizeFirstLetterOfEachWord(input);
         Utils.doesCountryExist(input, countrySet);
         correctInput = true;
       } catch (CountryDoesNotExistException e) {
