@@ -48,6 +48,7 @@ public class MapEngine {
     for (Country country : countrySet) {
       if (country.getCountryName().equals(input)) {
         MessageCli.COUNTRY_INFO.printMessage(input, country.getContinent(), country.getTaxFee());
+        correctInput = false;
       }
     }
   }
