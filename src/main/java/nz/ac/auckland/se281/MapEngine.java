@@ -8,6 +8,7 @@ import java.util.Set;
 public class MapEngine {
 
   private Set<Country> countrySet = new HashSet<>();
+  private Graph<Country> riskMap = new Graph<>();
   private boolean correctInput = false;
   private String start = null;
   private boolean correctStart = false;
@@ -25,10 +26,18 @@ public class MapEngine {
     List<String> adjacencies = Utils.readAdjacencies();
     // add code here to create your data structures
 
-    for (String s : countries) {
-      String[] parts = s.split(",");
+    for (int i = 0; i < 42; i++) {
+      String[] parts = countries.get(i).split(",");
       Country country = new Country(parts[0], parts[1], parts[2]);
       countrySet.add(country);
+    }
+
+    for (int i = 0; i < 42; i++) {
+      String[] parts = adjacencies.get(i).split(",");
+      Country country = Utils.getCountryByName(parts[0], countrySet);
+      for (int j = 1; j < parts.length; j++) {
+        riskMap.addEdge(country, Utils.getCountryByName(parts[j], countrySet));
+      }
     }
   }
 

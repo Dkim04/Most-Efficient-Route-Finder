@@ -24,8 +24,10 @@ class Graph<T> {
   public void addEdge(T node1, T node2) {
     addVertex(node1);
     addVertex(node2);
-    adjacencyMap.get(node1).add(node2);
-    adjacencyMap.get(node2).add(node1);
+    if (!adjacencyMap.get(node1).contains(node2)) {
+      adjacencyMap.get(node1).add(node2);
+      adjacencyMap.get(node2).add(node1);
+    }
   }
 
   public List<T> findShortestPath(T start, T end) {
