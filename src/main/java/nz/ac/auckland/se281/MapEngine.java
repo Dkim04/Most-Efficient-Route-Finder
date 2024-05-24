@@ -14,6 +14,7 @@ public class MapEngine {
   private boolean correctStart = false;
   private String end = null;
   private boolean correctEnd = false;
+  private String route = null;
 
   public MapEngine() {
     // add other code here if you want
@@ -95,6 +96,16 @@ public class MapEngine {
 
     if (start.equals(end)) {
       MessageCli.NO_CROSSBORDER_TRAVEL.printMessage();
+    } else {
+      List<Country> countryRoute =
+          riskMap.findShortestPath(
+              Utils.getCountryByName(start, countrySet), Utils.getCountryByName(end, countrySet));
+      route = "[" + start;
+      for (int i = 1; i < countryRoute.size(); i++) {
+        route = route + ", " + countryRoute.get(i).getCountryName();
+      }
+      route = route + "]";
+      MessageCli.ROUTE_INFO.printMessage(route);
     }
   }
 }
