@@ -97,23 +97,26 @@ public class MapEngine {
     if (start.equals(end)) {
       MessageCli.NO_CROSSBORDER_TRAVEL.printMessage();
     } else {
+      Integer taxSum = 0;
       List<String> continentsVisited = new ArrayList<>();
       List<String> route = new ArrayList<>();
       List<Country> countryRoute =
           riskMap.findShortestPath(
               Utils.getCountryByName(start, countrySet), Utils.getCountryByName(end, countrySet));
       for (Country country : countryRoute) {
+        taxSum += Integer.parseInt(country.getTaxFee());
         route.add(country.getCountryName());
         if (!continentsVisited.contains(country.getContinent())) {
           continentsVisited.add(country.getContinent());
         }
       }
-
+      taxSum -= Integer.parseInt(countryRoute.get(0).getTaxFee());
       String routeString = Utils.convertListToString(route);
       String continentsVisitedString = Utils.convertListToString(continentsVisited);
 
       MessageCli.ROUTE_INFO.printMessage(routeString);
       MessageCli.CONTINENT_INFO.printMessage(continentsVisitedString);
+      MessageCli.TAX_INFO.printMessage(Integer.toString(taxSum));
     }
   }
 }
