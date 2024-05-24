@@ -92,4 +92,12 @@ public class Utils {
     }
     return null;
   }
+
+  public static String convertListToString(List<String> list) {
+    String string = "[" + list.get(0);
+    for (int i = 1; i < list.size(); i++) {
+      string += ", " + list.get(i);
+    }
+    return string + "]";
+  }
 }

@@ -1,5 +1,6 @@
 package nz.ac.auckland.se281;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -14,7 +15,6 @@ public class MapEngine {
   private boolean correctStart = false;
   private String end = null;
   private boolean correctEnd = false;
-  private String route = null;
 
   public MapEngine() {
     // add other code here if you want
@@ -97,15 +97,23 @@ public class MapEngine {
     if (start.equals(end)) {
       MessageCli.NO_CROSSBORDER_TRAVEL.printMessage();
     } else {
+      List<String> continentsVisited = new ArrayList<>();
+      List<String> route = new ArrayList<>();
       List<Country> countryRoute =
           riskMap.findShortestPath(
               Utils.getCountryByName(start, countrySet), Utils.getCountryByName(end, countrySet));
-      route = "[" + start;
-      for (int i = 1; i < countryRoute.size(); i++) {
-        route = route + ", " + countryRoute.get(i).getCountryName();
+      for (Country country : countryRoute) {
+        route.add(country.getCountryName());
+        if (!continentsVisited.contains(country.getContinent())) {
+          continentsVisited.add(country.getContinent());
+        }
       }
-      route = route + "]";
-      MessageCli.ROUTE_INFO.printMessage(route);
+
+      String routeString = Utils.convertListToString(route);
+      String continentsVisitedString = Utils.convertListToString(continentsVisited);
+
+      MessageCli.ROUTE_INFO.printMessage(routeString);
+      MessageCli.CONTINENT_INFO.printMessage(continentsVisitedString);
     }
   }
 }
