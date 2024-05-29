@@ -85,6 +85,7 @@ public class Utils {
     throw new CountryDoesNotExistException();
   }
 
+  /** Get a country by its name as a string. */
   public static Country getCountryByName(String countryName, Set<Country> set) {
     for (Country country : set) {
       if (country.getCountryName().equals(countryName)) {
