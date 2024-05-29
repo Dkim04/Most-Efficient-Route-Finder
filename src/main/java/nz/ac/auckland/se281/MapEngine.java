@@ -96,7 +96,8 @@ public class MapEngine {
       }
     }
 
-    // use BFS to find the shortest path between the start and end country
+    // use BFS method in the Graph class to find the shortest path between the start and end country
+    // and get the correct amount of tax needed to pay as well as all the continents being visited
     if (start.equals(end)) {
       MessageCli.NO_CROSSBORDER_TRAVEL.printMessage();
     } else {
