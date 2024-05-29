@@ -41,6 +41,9 @@ public class Country {
 
   @Override
   public boolean equals(Object obj) {
+    // compare the object and the classes as well as their country name since there are no different
+    // countries with the same name
+
     if (this == obj) {
       return true;
     } else if (obj == null) {
