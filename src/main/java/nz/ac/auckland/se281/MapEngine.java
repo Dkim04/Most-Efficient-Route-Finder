@@ -70,6 +70,8 @@ public class MapEngine {
   /** this method is invoked when the user run the command route. */
   public void showRoute() {
 
+    // use the same code used in the showInfoCountry method to get the correct input of the start
+    // and end
     while (!correctStart) {
       try {
         MessageCli.INSERT_SOURCE.printMessage();
@@ -94,6 +96,7 @@ public class MapEngine {
       }
     }
 
+    // use BFS to find the shortest path between the start and end country
     if (start.equals(end)) {
       MessageCli.NO_CROSSBORDER_TRAVEL.printMessage();
     } else {
