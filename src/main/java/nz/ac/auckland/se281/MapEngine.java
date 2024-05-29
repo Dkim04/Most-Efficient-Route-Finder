@@ -53,11 +53,11 @@ public class MapEngine {
         input = Utils.scanner.nextLine();
         Utils.doesCountryExist(input, countrySet);
         correctInput = true;
-        input = Utils.capitalizeFirstLetterOfEachWord(input);
       } catch (CountryDoesNotExistException e) {
-        MessageCli.INVALID_COUNTRY.printMessage(Utils.capitalizeFirstLetterOfEachWord(input));
+        MessageCli.INVALID_COUNTRY.printMessage(e.getMessage());
       }
     }
+    input = Utils.capitalizeFirstLetterOfEachWord(input);
 
     for (Country country : countrySet) {
       if (country.getCountryName().equals(input)) {
@@ -78,11 +78,11 @@ public class MapEngine {
         start = Utils.scanner.nextLine();
         Utils.doesCountryExist(start, countrySet);
         correctStart = true;
-        start = Utils.capitalizeFirstLetterOfEachWord(start);
       } catch (CountryDoesNotExistException e) {
-        MessageCli.INVALID_COUNTRY.printMessage(Utils.capitalizeFirstLetterOfEachWord(start));
+        MessageCli.INVALID_COUNTRY.printMessage(e.getMessage());
       }
     }
+    start = Utils.capitalizeFirstLetterOfEachWord(start);
 
     while (!correctEnd) {
       try {
@@ -90,11 +90,11 @@ public class MapEngine {
         end = Utils.scanner.nextLine();
         Utils.doesCountryExist(end, countrySet);
         correctEnd = true;
-        end = Utils.capitalizeFirstLetterOfEachWord(end);
       } catch (CountryDoesNotExistException e) {
-        MessageCli.INVALID_COUNTRY.printMessage(Utils.capitalizeFirstLetterOfEachWord(end));
+        MessageCli.INVALID_COUNTRY.printMessage(e.getMessage());
       }
     }
+    end = Utils.capitalizeFirstLetterOfEachWord(end);
 
     // use BFS method in the Graph class to find the shortest path between the start and end country
     // and get the correct amount of tax needed to pay as well as all the continents being visited

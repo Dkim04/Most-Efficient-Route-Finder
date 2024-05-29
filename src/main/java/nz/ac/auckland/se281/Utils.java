@@ -83,7 +83,7 @@ public class Utils {
       }
     }
 
-    throw new CountryDoesNotExistException();
+    throw new CountryDoesNotExistException(country);
   }
 
   /** Get a country by its name as a string. */
@@ -98,10 +98,12 @@ public class Utils {
 
   /** Convert a list of strings to a single string. */
   public static String convertListToString(List<String> list) {
-    String string = "[" + list.get(0);
+    StringBuilder sb = new StringBuilder();
+    sb.append("[");
+    sb.append(list.get(0));
     for (int i = 1; i < list.size(); i++) {
-      string += ", " + list.get(i);
+      sb.append(", " + list.get(i));
     }
-    return string + "]";
+    return sb.append("]").toString();
   }
 }

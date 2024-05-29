@@ -34,8 +34,9 @@ public class Country {
   @Override
   public int hashCode() {
     int sum = 0;
-    for (Character c : countryName.toCharArray()) {
-      sum += c * countryName.indexOf(c);
+    char[] countryNameChars = countryName.toCharArray();
+    for (int i = 0; i < countryNameChars.length; i++) {
+      sum += countryNameChars[i] * i;
     }
 
     return sum;
