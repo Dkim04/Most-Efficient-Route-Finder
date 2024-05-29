@@ -73,6 +73,7 @@ public class Utils {
     return capitalizedString.toString().trim();
   }
 
+  /** Check if a country exists in a set of countries. */
   public static boolean doesCountryExist(String country, Set<Country> set)
       throws CountryDoesNotExistException {
     for (Country otheCountry : set) {
