@@ -1,11 +1,13 @@
 package nz.ac.auckland.se281;
 
+/** This class represents a country with its name, continent and tax fee. */
 public class Country {
 
   private String countryName;
   private String continent;
   private String taxFee;
 
+  /** Constructor for the Country class. */
   public Country(String countryName, String continent, String taxFee) {
     this.countryName = countryName;
     this.continent = continent;
