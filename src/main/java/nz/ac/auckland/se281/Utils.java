@@ -76,6 +76,7 @@ public class Utils {
   /** Check if a country exists in a set of countries. */
   public static boolean doesCountryExist(String country, Set<Country> set)
       throws CountryDoesNotExistException {
+    country = capitalizeFirstLetterOfEachWord(country);
     for (Country otheCountry : set) {
       if (otheCountry.getCountryName().equals(country)) {
         return true;

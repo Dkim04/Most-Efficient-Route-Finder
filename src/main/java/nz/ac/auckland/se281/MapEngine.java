@@ -51,11 +51,11 @@ public class MapEngine {
       try {
         MessageCli.INSERT_COUNTRY.printMessage();
         input = Utils.scanner.nextLine();
-        input = Utils.capitalizeFirstLetterOfEachWord(input);
         Utils.doesCountryExist(input, countrySet);
         correctInput = true;
+        input = Utils.capitalizeFirstLetterOfEachWord(input);
       } catch (CountryDoesNotExistException e) {
-        MessageCli.INVALID_COUNTRY.printMessage(input);
+        MessageCli.INVALID_COUNTRY.printMessage(Utils.capitalizeFirstLetterOfEachWord(input));
       }
     }
 
@@ -76,11 +76,11 @@ public class MapEngine {
       try {
         MessageCli.INSERT_SOURCE.printMessage();
         start = Utils.scanner.nextLine();
-        start = Utils.capitalizeFirstLetterOfEachWord(start);
         Utils.doesCountryExist(start, countrySet);
         correctStart = true;
+        start = Utils.capitalizeFirstLetterOfEachWord(start);
       } catch (CountryDoesNotExistException e) {
-        MessageCli.INVALID_COUNTRY.printMessage(start);
+        MessageCli.INVALID_COUNTRY.printMessage(Utils.capitalizeFirstLetterOfEachWord(start));
       }
     }
 
@@ -88,11 +88,11 @@ public class MapEngine {
       try {
         MessageCli.INSERT_DESTINATION.printMessage();
         end = Utils.scanner.nextLine();
-        end = Utils.capitalizeFirstLetterOfEachWord(end);
         Utils.doesCountryExist(end, countrySet);
         correctEnd = true;
+        end = Utils.capitalizeFirstLetterOfEachWord(end);
       } catch (CountryDoesNotExistException e) {
-        MessageCli.INVALID_COUNTRY.printMessage(end);
+        MessageCli.INVALID_COUNTRY.printMessage(Utils.capitalizeFirstLetterOfEachWord(end));
       }
     }
 
