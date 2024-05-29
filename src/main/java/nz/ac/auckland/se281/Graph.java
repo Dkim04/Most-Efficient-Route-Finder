@@ -28,6 +28,9 @@ class Graph<T> {
   }
 
   public List<T> findShortestPath(T start, T end) {
+    // use BFS to find the shortest path from the start to the end while keeping a seperate
+    // parentmap so that we are able to get the path we took to get to the destination country
+
     if (!adjacencyMap.containsKey(start)) {
       return null; // Start node not present in the graph
     }
